@@ -158,22 +158,22 @@ export function build(ctx) {
         this.classStyle = "green";
         this.windowClass = "green";
         this.status.description =
-          connectionStatusConnected + ". " + connectionDelayGood;
+          connectionStatusConnected + "。" + connectionDelayGood;
       } else if (avgDelay < 100) {
         this.classStyle = "yellow";
         this.windowClass = "yellow";
         this.status.description =
-          connectionStatusConnected + ". " + connectionDelayFair;
+          connectionStatusConnected + "。" + connectionDelayFair;
       } else if (avgDelay < 300) {
         this.classStyle = "orange";
         this.windowClass = "orange";
         this.status.description =
-          connectionStatusConnected + ". " + connectionDelayMedian;
+          connectionStatusConnected + "。" + connectionDelayMedian;
       } else {
         this.classStyle = "red";
         this.windowClass = "red";
         this.status.description =
-          connectionStatusConnected + ". " + connectionDelayHeavy;
+          connectionStatusConnected + "。" + connectionDelayHeavy;
       }
     },
     close(e) {

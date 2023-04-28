@@ -242,7 +242,7 @@ class SSH {
 }
 
 const initialFieldDef = {
-  主机: {
+  "主机": {
     name: "主机",
     description: "",
     type: "text",
@@ -276,7 +276,7 @@ const initialFieldDef = {
       return "看起来像一个 " + addr.type + " 地址";
     },
   },
-  用户名: {
+  "用户名": {
     name: "用户名",
     description: "",
     type: "text",
@@ -300,7 +300,7 @@ const initialFieldDef = {
       return "我们将以用户 \"" + d + '" 的身份登录';
     },
   },
-  编码: {
+  "编码": {
     name: "编码",
     description: "服务器的字符编码",
     type: "select",
@@ -322,7 +322,7 @@ const initialFieldDef = {
       throw new Error('不支持 "' + d + '" 字符编码');
     },
   },
-  提示: {
+  "提示": {
     name: "提示",
     description: "",
     type: "textdata",
@@ -337,7 +337,7 @@ const initialFieldDef = {
       return "";
     },
   },
-  密码: {
+  "密码": {
     name: "密码",
     description: "",
     type: "password",
@@ -426,7 +426,7 @@ const initialFieldDef = {
       return "我们将用这个私钥登录";
     },
   },
-  身份验证: {
+  "身份验证": {
     name: "身份验证",
     description:
       "请确保你所选择的认证方法被服务器支持，否则它将被忽略，并可能导致登录失败。",
@@ -449,7 +449,7 @@ const initialFieldDef = {
       }
     },
   },
-  指纹: {
+  "指纹": {
     name: "指纹",
     description:
       "请仔细核实指纹。如果你不知道这个指纹，请取消本次连接，否则中间人可能窃取你的连接凭据。",
@@ -742,10 +742,10 @@ class Wizard {
           return self.buildCommand(
             sd,
             {
-              user: r.user,
-              authentication: r.authentication,
-              host: r.host,
-              charset: r.encoding,
+              user: r.用户名,
+              authentication: r.身份验证,
+              host: r.主机,
+              charset: r.编码,
               fingerprint: self.preset
                 ? self.preset.metaDefault("指纹", "")
                 : "",

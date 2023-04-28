@@ -86,7 +86,7 @@
           'last-planel': knownList.length > 0,
         }"
       >
-        <h3>Presets</h3>
+        <h3>预设</h3>
 
         <ul class="hlst lstcl2">
           <li

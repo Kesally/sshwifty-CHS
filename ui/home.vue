@@ -71,7 +71,7 @@
         <h1>欢迎使用 Sshwifty</h1>
 
         <p>
-          这是一个开源的网络SSH客户端，使你能够连接到SSH服务器而无需下载任何额外的软件。
+          这是一个开源的网络 SSH 客户端，使你能够连接到 SSH 服务器而无需下载任何额外的软件。
         </p>
 
         <p>
@@ -95,7 +95,7 @@
           >。如果 Sshwifty 的维护者必须在如此极端的时间内工作，那么这个项目就不会存在。
           如果你从像这样的业余项目中受益，请考虑
           <a
-            href="https://github.com/996icu/996.ICU/#what-can-i-do"
+            href="https://github.com/996icu/996.ICU/blob/master/README_CN.md#%E6%88%91%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88"
             target="blank"
             >支持这一行动</a
           >。
