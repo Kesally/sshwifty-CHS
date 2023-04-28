@@ -419,8 +419,8 @@ class Wizard {
           return self.buildCommand(
             sd,
             {
-              host: r.host,
-              charset: r.encoding,
+              host: r.主机,
+              charset: r.编码,
             },
             self.session
           );
