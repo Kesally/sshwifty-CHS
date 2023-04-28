@@ -613,25 +613,25 @@ class Wizard {
         switch (hd.data()) {
           case SERVER_REQUEST_ERROR_BAD_USERNAME:
             self.step.resolve(
-              self.stepErrorDone("Request failed", "Invalid username")
+              self.stepErrorDone("请求失败", "无效的用户名")
             );
             return;
 
           case SERVER_REQUEST_ERROR_BAD_ADDRESS:
             self.step.resolve(
-              self.stepErrorDone("Request failed", "Invalid address")
+              self.stepErrorDone("请求失败", "无效的地址")
             );
             return;
 
           case SERVER_REQUEST_ERROR_BAD_AUTHMETHOD:
             self.step.resolve(
-              self.stepErrorDone("Request failed", "Invalid authication method")
+              self.stepErrorDone("请求失败", "无效的验证方式")
             );
             return;
         }
 
         self.step.resolve(
-          self.stepErrorDone("Request failed", "Unknown error: " + hd.data())
+          self.stepErrorDone("请求失败", "未知错误: " + hd.data())
         );
       },
       initialized(hd) {

@@ -290,8 +290,8 @@ class Wizard {
   close() {
     this.step.resolve(
       this.stepErrorDone(
-        "Action cancelled",
-        "Action has been cancelled without reach any success"
+        "操作已取消",
+        "操作已取消且未取得任何成果"
       )
     );
   }
@@ -304,22 +304,22 @@ class Wizard {
     return command.done(
       true,
       data,
-      "Success!",
-      "We have connected to the remote"
+      "成功！",
+      "我们已经连接到远程主机"
     );
   }
 
   stepWaitForAcceptWait() {
     return command.wait(
-      "Requesting",
-      "Waiting for the request to be accepted by the backend"
+      "请求中",
+      "等待请求被后端接受"
     );
   }
 
   stepWaitForEstablishWait(host) {
     return command.wait(
-      "Connecting to " + host,
-      "Establishing connection with the remote host, may take a while"
+      "正在连接 " + host,
+      "与远程主机建立连接，可能需要一段时间"
     );
   }
 
@@ -346,7 +346,7 @@ class Wizard {
         switch (streamInitialHeader.data()) {
           case SERVER_INITIAL_ERROR_BAD_ADDRESS:
             self.step.resolve(
-              self.stepErrorDone("Request rejected", "Invalid address")
+              self.stepErrorDone("请求被拒绝", "无效的地址")
             );
 
             return;
@@ -354,8 +354,8 @@ class Wizard {
 
         self.step.resolve(
           self.stepErrorDone(
-            "Request rejected",
-            "Unknown error code: " + streamInitialHeader.data()
+            "请求被拒绝",
+            "未知错误码: " + streamInitialHeader.data()
           )
         );
       },
@@ -397,7 +397,7 @@ class Wizard {
         let readed = await reader.readCompletely(rd),
           message = new TextDecoder("utf-8").decode(readed.buffer);
 
-        self.step.resolve(self.stepErrorDone("Connection failed", message));
+        self.step.resolve(self.stepErrorDone("连接失败", message));
       },
       "@inband"(rd) {},
       close() {},
