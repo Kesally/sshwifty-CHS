@@ -179,7 +179,7 @@ class Telnet {
 }
 
 const initialFieldDef = {
-  Host: {
+  主机: {
     name: "主机",
     description:
       "正在寻找可以连接的服务器&quest; 要不康康 " +
@@ -216,7 +216,7 @@ const initialFieldDef = {
       return "Look like " + addr.type + " address";
     },
   },
-  Encoding: {
+  编码: {
     name: "编码",
     description: "服务器的字符编码",
     type: "select",
@@ -433,7 +433,7 @@ class Wizard {
         initialFieldDef,
         [
           {
-            name: "Host",
+            name: "主机",
             suggestions(input) {
               const hosts = self.history.search(
                 "Telnet",
@@ -449,7 +449,7 @@ class Wizard {
                   title: hosts[i].title,
                   value: hosts[i].data.host,
                   meta: {
-                    Encoding: hosts[i].data.charset,
+                    编码: hosts[i].data.charset,
                   },
                 });
               }
@@ -457,7 +457,7 @@ class Wizard {
               return sugg;
             },
           },
-          { name: "Encoding" },
+          { name: "编码" },
         ],
         self.preset,
         (r) => {}
@@ -536,7 +536,7 @@ export class Command {
   }
 
   description() {
-    return "Teletype Network";
+    return "远程终端协议";
   }
 
   color() {
@@ -595,7 +595,7 @@ export class Command {
     }
 
     try {
-      initialFieldDef["Host"].verify(d[0]);
+      initialFieldDef["主机"].verify(d[0]);
     } catch (e) {
       throw new Exception(
         'Given launcher "' + launcher + '" was invalid: ' + e
@@ -607,7 +607,7 @@ export class Command {
     if (d.length > 1) {
       // TODO: Remove this check after depreciation period.
       try {
-        initialFieldDef["Encoding"].verify(d[1]);
+        initialFieldDef["编码"].verify(d[1]);
 
         charset = d[1];
       } catch (e) {
@@ -640,7 +640,7 @@ export class Command {
     const host = preset.host();
 
     if (host.length > 0) {
-      preset.insertMeta("Host", host);
+      preset.insertMeta("主机", host);
     }
 
     return preset;

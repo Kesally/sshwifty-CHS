@@ -332,7 +332,7 @@ function startApp(rootEl) {
               alert("Unexpected backend query status: " + result.result);
           }
         } catch (e) {
-          this.loadErr = "Unable to initialize client application: " + e;
+          this.loadErr = "无法初始化客户端应用程序: " + e;
         }
       },
       async submitAuth(passphrase) {
@@ -364,7 +364,7 @@ function startApp(rootEl) {
               break;
 
             case 403:
-              this.authErr = "Authentication has failed. Wrong passphrase?";
+              this.authErr = "认证失败。密码错误？";
               break;
 
             default:
@@ -372,7 +372,7 @@ function startApp(rootEl) {
                 "Unexpected backend query status: " + result.result;
           }
         } catch (e) {
-          this.authErr = "Unable to authenticate: " + e;
+          this.authErr = "无法认证: " + e;
         }
       },
       updateTabTitleInfo(tabs, updated) {
@@ -426,7 +426,7 @@ function initializeClient() {
   }
 
   if (process.env.NODE_ENV === "development") {
-    console.log("Currently in Development environment");
+    console.log("目前处于开发环境");
   }
 
   window.addEventListener("unhandledrejection", function (e) {

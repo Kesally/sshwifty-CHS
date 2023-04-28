@@ -112,17 +112,16 @@
         </ul>
 
         <div v-if="restrictedToPresets" id="connect-known-list-presets-alert">
-          The operator has restricted the outgoing connections. You can only
-          connect to remotes from the pre-defined presets.
+          服务管理员限制了传出连接。你只能连接预设的远程主机。
         </div>
       </div>
     </div>
 
     <div id="connect-known-list-import">
-      Tip: You can
-      <a href="javascript:;" @click="importHosts">import</a> and
-      <a href="javascript:;" @click="exportHosts">export</a>
-      known remotes from and to a file.
+      提示: 你可以
+      <a href="javascript:;" @click="importHosts">导入</a> 或
+      <a href="javascript:;" @click="exportHosts">导出</a>
+      历史连接信息。
     </div>
   </div>
 </template>

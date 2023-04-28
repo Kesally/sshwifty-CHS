@@ -242,7 +242,7 @@ class SSH {
 }
 
 const initialFieldDef = {
-  Host: {
+  主机: {
     name: "主机",
     description: "",
     type: "text",
@@ -276,7 +276,7 @@ const initialFieldDef = {
       return "看起来像一个 " + addr.type + " 地址";
     },
   },
-  User: {
+  用户名: {
     name: "用户名",
     description: "",
     type: "text",
@@ -300,7 +300,7 @@ const initialFieldDef = {
       return "我们将以用户 \"" + d + '" 的身份登录';
     },
   },
-  Encoding: {
+  编码: {
     name: "编码",
     description: "服务器的字符编码",
     type: "select",
@@ -322,7 +322,7 @@ const initialFieldDef = {
       throw new Error('不支持 "' + d + '" 字符编码');
     },
   },
-  Notice: {
+  提示: {
     name: "提示",
     description: "",
     type: "textdata",
@@ -337,7 +337,7 @@ const initialFieldDef = {
       return "";
     },
   },
-  Password: {
+  密码: {
     name: "密码",
     description: "",
     type: "password",
@@ -361,7 +361,7 @@ const initialFieldDef = {
       return "我们将用这个密码登录";
     },
   },
-  "Private Key": {
+  "私钥": {
     name: "私钥",
     description:
       '例如 <i style="color: #fff; font-style: normal;">' +
@@ -426,21 +426,21 @@ const initialFieldDef = {
       return "我们将用这个私钥登录";
     },
   },
-  Authentication: {
+  身份验证: {
     name: "身份验证",
     description:
       "请确保你所选择的认证方法被服务器支持，否则它将被忽略，并可能导致登录失败。",
     type: "radio",
     value: "",
-    example: "Password,Private Key,None",
+    example: "密码,私钥,None",
     readonly: false,
     suggestions(input) {
       return [];
     },
     verify(d) {
       switch (d) {
-        case "Password":
-        case "Private Key":
+        case "密码":
+        case "私钥":
         case "None":
           return "";
 
@@ -449,7 +449,7 @@ const initialFieldDef = {
       }
     },
   },
-  Fingerprint: {
+  指纹: {
     name: "指纹",
     description:
       "请仔细核实指纹。如果你不知道这个指纹，请取消本次连接，否则中间人可能窃取你的连接凭据。",
@@ -481,14 +481,14 @@ function getAuthMethodFromStr(d) {
     case "None":
       return AUTHMETHOD_NONE;
 
-    case "Password":
+    case "密码":
       return AUTHMETHOD_PASSPHRASE;
 
-    case "Private Key":
+    case "私钥":
       return AUTHMETHOD_PRIVATE_KEY;
 
     default:
-      throw new Exception("Unknown Auth method");
+      throw new Exception("未知的身份验证方式");
   }
 }
 
@@ -734,7 +734,7 @@ class Wizard {
     return command.prompt(
       "SSH",
       "安全外壳协议",
-      "Connect",
+      "连接",
       (r) => {
         self.hasStarted = true;
 
@@ -747,7 +747,7 @@ class Wizard {
               host: r.host,
               charset: r.encoding,
               fingerprint: self.preset
-                ? self.preset.metaDefault("Fingerprint", "")
+                ? self.preset.metaDefault("指纹", "")
                 : "",
             },
             self.session
@@ -761,7 +761,7 @@ class Wizard {
         initialFieldDef,
         [
           {
-            name: "Host",
+            name: "主机",
             suggestions(input) {
               const hosts = self.history.search(
                 "SSH",
@@ -777,9 +777,9 @@ class Wizard {
                   title: hosts[i].title,
                   value: hosts[i].data.host,
                   meta: {
-                    User: hosts[i].data.user,
-                    Authentication: hosts[i].data.authentication,
-                    Encoding: hosts[i].data.charset,
+                    用户名: hosts[i].data.user,
+                    身份验证: hosts[i].data.authentication,
+                    编码: hosts[i].data.charset,
                   },
                 });
               }
@@ -787,10 +787,10 @@ class Wizard {
               return sugg;
             },
           },
-          { name: "User" },
-          { name: "Authentication" },
-          { name: "Encoding" },
-          { name: "Notice" },
+          { name: "用户名" },
+          { name: "身份验证" },
+          { name: "编码" },
+          { name: "提示" },
         ],
         self.preset,
         (r) => {}
@@ -840,7 +840,7 @@ class Wizard {
       },
       command.fields(initialFieldDef, [
         {
-          name: "Fingerprint",
+          name: "指纹",
           value: fingerprintData,
         },
       ])
@@ -863,16 +863,16 @@ class Wizard {
 
     switch (config.auth) {
       case AUTHMETHOD_PASSPHRASE:
-        fields = [{ name: "Password" }];
+        fields = [{ name: "密码" }];
         break;
 
       case AUTHMETHOD_PRIVATE_KEY:
-        fields = [{ name: "Private Key" }];
+        fields = [{ name: "私钥" }];
         break;
 
       default:
         throw new Exception(
-          'Auth method "' + config.auth + '" was unsupported'
+          '不支持 "' + config.auth + '" 验证方式'
         );
     }
 
@@ -891,9 +891,9 @@ class Wizard {
     );
 
     return command.prompt(
-      "Provide credential",
-      "Please input your credential",
-      "Login",
+      "提供凭据",
+      "请输入你的凭据",
+      "登录",
       (r) => {
         let vv = r[fields[0].name.toLowerCase()];
 
@@ -911,8 +911,8 @@ class Wizard {
 
         self.step.resolve(
           command.wait(
-            "Cancelling login",
-            "Cancelling login request, please wait"
+            "取消登录",
+            "正在取消登录请求，请稍等"
           )
         );
       },
@@ -994,7 +994,7 @@ export class Command {
   }
 
   description() {
-    return "Secure Shell Host";
+    return "安全外壳协议";
   }
 
   color() {
@@ -1064,10 +1064,10 @@ export class Command {
       charset = d.length >= 3 && d[2] ? d[2] : "utf-8"; // RM after depreciation
 
     try {
-      initialFieldDef["User"].verify(user);
-      initialFieldDef["Host"].verify(host);
-      initialFieldDef["Authentication"].verify(auth);
-      initialFieldDef["Encoding"].verify(charset);
+      initialFieldDef["用户名"].verify(user);
+      initialFieldDef["主机"].verify(host);
+      initialFieldDef["身份验证"].verify(auth);
+      initialFieldDef["编码"].verify(charset);
     } catch (e) {
       throw new Exception(
         'Given launcher "' + launcher + '" was malformed ' + e
@@ -1107,7 +1107,7 @@ export class Command {
     const host = preset.host();
 
     if (host.length > 0) {
-      preset.insertMeta("Host", host);
+      preset.insertMeta("主机", host);
     }
 
     return preset;
