@@ -27,13 +27,14 @@ jobs:
 
       - run: npm run testonly
 
-      - run: go install -v github.com/mitchellh/gox@latest
-
       - name: Go Build
         run: |
+          export PATH=$PATH:"$(go env GOPATH)/bin"
+          export GO111MODULE=on
           export SSHWIFTY_VERSION=$(git describe --always --dirty='*' --tag)
           export SSHWIFTY_COMMIT=$(git describe --always)
           export BUILD_TARGETS="darwin/amd64 windows/386 windows/amd64 openbsd/386 openbsd/amd64 openbsd/arm openbsd/arm64 freebsd/386 freebsd/amd64 freebsd/arm freebsd/arm64 linux/386 linux/amd64 linux/arm linux/arm64 linux/riscv64 linux/ppc64 linux/ppc64le linux/mips linux/mipsle linux/mips64 linux/mips64le"
+          go install -v github.com/mitchellh/gox@latest
           CGO_ENABLED=0 GOMIPS=softfloat gox -ldflags "-s -w -X $VERSION_VARIABLE=$SSHWIFTY_VERSION" -osarch "$BUILD_TARGETS" -output "./.tmp/release/{{.Dir}}_${SSHWIFTY_VERSION}_{{.OS}}_{{.Arch}}/{{.Dir}}_{{.OS}}_{{.Arch}}"
 
       - name: Upload a Build Artifact
