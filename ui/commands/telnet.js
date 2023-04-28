@@ -194,26 +194,26 @@ const initialFieldDef = {
     },
     verify(d) {
       if (d.length <= 0) {
-        throw new Error("Hostname must be specified");
+        throw new Error("必须输入主机地址");
       }
 
       let addr = common.splitHostPort(d, DEFAULT_PORT);
 
       if (addr.addr.length <= 0) {
-        throw new Error("Cannot be empty");
+        throw new Error("不能为空");
       }
 
       if (addr.addr.length > address.MAX_ADDR_LEN) {
         throw new Error(
-          "Can no longer than " + address.MAX_ADDR_LEN + " bytes"
+          "地址不能超过 " + address.MAX_ADDR_LEN + " 字节"
         );
       }
 
       if (addr.port <= 0) {
-        throw new Error("Port must be specified");
+        throw new Error("请指定有效端口");
       }
 
-      return "Look like " + addr.type + " address";
+      return "看起来像一个 " + addr.type + " 地址";
     },
   },
   编码: {

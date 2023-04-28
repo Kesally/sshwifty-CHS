@@ -331,11 +331,11 @@ export function strToBinary(d) {
  */
 export function parseHostname(d) {
   if (d.length <= 0) {
-    throw new Exception("Invalid address");
+    throw new Exception("无效地址");
   }
 
   if (!isHostname(d)) {
-    throw new Exception("Invalid address");
+    throw new Exception("无效地址");
   }
 
   return strToUint8Array(d);
@@ -361,7 +361,7 @@ function parseIP(d) {
   }
 
   return {
-    type: "Hostname",
+    type: "域名或主机名",
     data: parseHostname(d),
   };
 }
@@ -382,12 +382,12 @@ export function splitHostPort(d, defPort) {
   }
 
   if (ipv6hps > 0) {
-    throw new Exception("Invalid address");
+    throw new Exception("无效地址");
   } else if (ipv6hps === 0) {
     let ipv6hpse = d.lastIndexOf("]");
 
     if (ipv6hpse <= ipv6hps || ipv6hpse + 1 != hps) {
-      throw new Exception("Invalid address");
+      throw new Exception("无效地址");
     }
   }
 
@@ -395,7 +395,7 @@ export function splitHostPort(d, defPort) {
     port = d.slice(hps + 1, d.length);
 
   if (!isNumber(port)) {
-    throw new Exception("Invalid address");
+    throw new Exception("无效地址");
   }
 
   let portNum = parseInt(port, 10),

@@ -27,7 +27,7 @@
     </div>
     <div v-else>
       <div v-if="knownList.length > 0" id="connect-known-list-list">
-        <h3>Connected before</h3>
+        <h3>历史记录</h3>
 
         <ul class="hlst lstcl1">
           <li v-for="(known, kk) in knownList" :key="kk">

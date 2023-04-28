@@ -24,7 +24,7 @@
     </li>
 
     <li :class="{ active: tab === 'known' }" @click="switchTab('known')">
-      历史记录 <span class="label">{{ knownsLength }}</span>
+      保存的主机 <span class="label">{{ knownsLength }}</span>
     </li>
   </ul>
 </template>
