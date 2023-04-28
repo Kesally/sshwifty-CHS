@@ -48,10 +48,10 @@ jobs:
         uses: actions/upload-artifact@v3.0.0
         with:
           name: build_windows_amd64
-          path: ./.tmp/release/sshwifty_*_windows_amd64.tar.gz
+          path: ./.tmp/release/sshwifty_*_windows_amd64
 
       - name: Upload a Build Artifact (linux)
         uses: actions/upload-artifact@v3.0.0
         with:
           name: build_linux_amd64
-          path: ./.tmp/release/sshwifty_*_linux_amd64.tar.gz
+          path: ./.tmp/release/sshwifty_*_linux_amd64
