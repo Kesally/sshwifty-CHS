@@ -324,7 +324,7 @@ export default {
 
           r.onload = () => {
             try {
-              self.knownsImport(JSON.parse(atob(decodeURIComponent(r.result))));
+              self.knownsImport(JSON.parse(decodeURIComponent(atob(r.result))));
             } catch (e) {
               alert("Unable to import known remotes due to error: " + e);
             }

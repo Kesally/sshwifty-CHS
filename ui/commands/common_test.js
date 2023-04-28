@@ -189,13 +189,13 @@ describe("Common", () => {
       // Host name
       {
         sample: "ssh.vaguly.com",
-        expectedType: "Hostname",
+        expectedType: "域名或主机名",
         expectedAddr: common.strToUint8Array("ssh.vaguly.com"),
         expectedPort: 22,
       },
       {
         sample: "ssh.vaguly.com:22",
-        expectedType: "Hostname",
+        expectedType: "域名或主机名",
         expectedAddr: common.strToUint8Array("ssh.vaguly.com"),
         expectedPort: 22,
       },
