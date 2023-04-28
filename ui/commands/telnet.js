@@ -180,11 +180,11 @@ class Telnet {
 
 const initialFieldDef = {
   Host: {
-    name: "Host",
+    name: "主机",
     description:
-      "Looking for server to connect&quest; Checkout " +
+      "正在寻找可以连接的服务器&quest; 要不康康 " +
       '<a href="http://www.telnet.org/htm/places.htm" target="blank">' +
-      "telnet.org</a> for public servers.",
+      "telnet.org</a> 的公共服务器。",
     type: "text",
     value: "",
     example: "telnet.vaguly.com:23",
@@ -217,8 +217,8 @@ const initialFieldDef = {
     },
   },
   Encoding: {
-    name: "Encoding",
-    description: "The character encoding of the server",
+    name: "编码",
+    description: "服务器的字符编码",
     type: "select",
     value: "utf-8",
     example: common.charsetPresets.join(","),
@@ -235,7 +235,7 @@ const initialFieldDef = {
         return "";
       }
 
-      throw new Error('The character encoding "' + d + '" is not supported');
+      throw new Error('不支持 "' + d + '" 字符编码');
     },
   },
 };
@@ -410,8 +410,8 @@ class Wizard {
 
     return command.prompt(
       "Telnet",
-      "Teletype Network",
-      "Connect",
+      "远程终端协议",
+      "连接",
       (r) => {
         self.hasStarted = true;
 

@@ -68,39 +68,37 @@
       @updated="tabUpdated"
     >
       <div id="home-content-wrap">
-        <h1>Hi, this is Sshwifty</h1>
+        <h1>欢迎使用 Sshwifty</h1>
 
         <p>
-          An Open Source Web SSH Client that enables you to connect to SSH
-          servers without downloading any additional software.
+          这是一个开源的网络SSH客户端，使你能够连接到SSH服务器而无需下载任何额外的软件。
         </p>
 
         <p>
-          To get started, click the
+          请点击左上角附近的
           <span
             id="home-content-connect"
             class="icon icon-plus1"
             @click="showConnectWindow"
           ></span>
-          icon near the top left corner.
+          图标建立连接。
         </p>
 
         <hr />
 
         <p class="secondary">
-          Programmers in China launched an online campaign against
+          我们反对
           <a
-            href="https://en.wikipedia.org/wiki/996_working_hour_system"
+            href="https://baike.baidu.com/item/996%E5%B7%A5%E4%BD%9C%E5%88%B6"
             target="blank"
-            >implicitly forced overtime work</a
-          >. Sshwifty wouldn't exist if its author must work such extreme
-          hours. If you're benefiting from hobbyist projects like this one,
-          please consider
+            >996</a
+          >。如果 Sshwifty 的维护者必须在如此极端的时间内工作，那么这个项目就不会存在。
+          如果你从像这样的业余项目中受益，请考虑
           <a
             href="https://github.com/996icu/996.ICU/#what-can-i-do"
             target="blank"
-            >supporting the action</a
-          >.
+            >支持这一行动</a
+          >。
         </p>
       </div>
     </screens>

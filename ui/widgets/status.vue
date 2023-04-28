@@ -24,7 +24,7 @@
     :display="display"
     @display="$emit('display', $event)"
   >
-    <h1 class="window-title">Connection status</h1>
+    <h1 class="window-title">连接状态</h1>
 
     <div id="conn-status-info">
       {{ status.description }}
@@ -33,7 +33,7 @@
     <div id="conn-status-delay" class="conn-status-chart">
       <div class="counters">
         <div class="counter">
-          <div class="name">Delay</div>
+          <div class="name">延迟</div>
           <div
             class="value"
             v-html="$options.filters.mSecondString(status.delay)"
@@ -70,7 +70,7 @@
     <div id="conn-status-traffic" class="conn-status-chart">
       <div class="counters">
         <div class="counter">
-          <div class="name">Inbound</div>
+          <div class="name">下载</div>
           <div
             class="value"
             v-html="$options.filters.bytePerSecondString(status.inbound)"
@@ -78,7 +78,7 @@
         </div>
 
         <div class="counter">
-          <div class="name">Outbound</div>
+          <div class="name">上传</div>
           <div
             class="value"
             v-html="$options.filters.bytePerSecondString(status.outbound)"

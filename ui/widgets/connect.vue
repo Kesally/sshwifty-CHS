@@ -25,7 +25,7 @@
     @display="$emit('display', $event)"
   >
     <div id="connect-frame">
-      <h1 class="window-title">Establish connection with</h1>
+      <h1 class="window-title">建立一个新连接</h1>
 
       <slot v-if="inputting"></slot>
 
@@ -60,15 +60,14 @@
         <span id="connect-warning-icon" class="icon icon-warning1"></span>
         <div id="connect-warning-msg">
           <p>
-            <strong>An insecured service may steal your secrets.</strong>
-            Always exam the safety of the service before using it.
+            <strong>不安全的服务可能会窃取你的凭据。</strong>
+            在使用该服务之前，一定要检查其安全性。
           </p>
 
           <p>
-            Sshwifty is a free software, you can deploy it on your own trusted
-            infrastructure.
-            <a href="https://github.com/nirui/sshwifty" target="_blank"
-              >Learn more</a
+            Sshwifty 是一个免费软件，你可以把它部署在你自己信任的基础设施上。
+            <a href="https://github.com/nkxingxh/sshwifty" target="_blank"
+              >了解更多</a
             >
           </p>
         </div>

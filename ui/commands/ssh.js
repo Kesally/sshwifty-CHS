@@ -243,7 +243,7 @@ class SSH {
 
 const initialFieldDef = {
   Host: {
-    name: "Host",
+    name: "主机",
     description: "",
     type: "text",
     value: "",
@@ -254,55 +254,55 @@ const initialFieldDef = {
     },
     verify(d) {
       if (d.length <= 0) {
-        throw new Error("Hostname must be specified");
+        throw new Error("必须指定主机名");
       }
 
       let addr = common.splitHostPort(d, DEFAULT_PORT);
 
       if (addr.addr.length <= 0) {
-        throw new Error("Cannot be empty");
+        throw new Error("不能为空");
       }
 
       if (addr.addr.length > address.MAX_ADDR_LEN) {
         throw new Error(
-          "Can no longer than " + address.MAX_ADDR_LEN + " bytes"
+          "不能超过 " + address.MAX_ADDR_LEN + " 字节"
         );
       }
 
       if (addr.port <= 0) {
-        throw new Error("Port must be specified");
+        throw new Error("必须指定端口");
       }
 
-      return "Look like " + addr.type + " address";
+      return "看起来像一个 " + addr.type + " 地址";
     },
   },
   User: {
-    name: "User",
+    name: "用户名",
     description: "",
     type: "text",
     value: "",
-    example: "guest",
+    example: "root",
     readonly: false,
     suggestions(input) {
       return [];
     },
     verify(d) {
       if (d.length <= 0) {
-        throw new Error("Username must be specified");
+        throw new Error("必须指定用户名");
       }
 
       if (d.length > MAX_USERNAME_LEN) {
         throw new Error(
-          "Username must not longer than " + MAX_USERNAME_LEN + " bytes"
+          "用户名不能超过 " + MAX_USERNAME_LEN + " 字节"
         );
       }
 
-      return "We'll login as user \"" + d + '"';
+      return "我们将以用户 \"" + d + '" 的身份登录';
     },
   },
   Encoding: {
-    name: "Encoding",
-    description: "The character encoding of the server",
+    name: "编码",
+    description: "服务器的字符编码",
     type: "select",
     value: "utf-8",
     example: common.charsetPresets.join(","),
@@ -319,16 +319,15 @@ const initialFieldDef = {
         return "";
       }
 
-      throw new Error('The character encoding "' + d + '" is not supported');
+      throw new Error('不支持 "' + d + '" 字符编码');
     },
   },
   Notice: {
-    name: "Notice",
+    name: "提示",
     description: "",
     type: "textdata",
     value:
-      "SSH session is handled by the backend. Traffic will be decrypted " +
-      "on the backend server and then transmit back to your client.",
+      "SSH会话是由后端处理的。流量将在后端服务器上解密，然后传回你的客户端。",
     example: "",
     readonly: false,
     suggestions(input) {
@@ -339,7 +338,7 @@ const initialFieldDef = {
     },
   },
   Password: {
-    name: "Password",
+    name: "密码",
     description: "",
     type: "password",
     value: "",
@@ -350,32 +349,31 @@ const initialFieldDef = {
     },
     verify(d) {
       if (d.length <= 0) {
-        throw new Error("Password must be specified");
+        throw new Error("必须指定密码");
       }
 
       if (d.length > MAX_PASSWORD_LEN) {
         throw new Error(
-          "It's too long, make it shorter than " + MAX_PASSWORD_LEN + " bytes"
+          "太长了，不能超过 " + MAX_PASSWORD_LEN + " 字节"
         );
       }
 
-      return "We'll login with this password";
+      return "我们将用这个密码登录";
     },
   },
   "Private Key": {
-    name: "Private Key",
+    name: "私钥",
     description:
-      'Like the one inside <i style="color: #fff; font-style: normal;">' +
-      "~/.ssh/id_rsa</i>, can&apos;t be encrypted<br /><br />" +
-      'To decrypt the Private Key, use command: <i style="color: #fff;' +
+      '例如 <i style="color: #fff; font-style: normal;">' +
+      "~/.ssh/id_rsa</i> 里面的那个, 不能被加密<br /><br />" +
+      '要解密私钥，请使用命令: <i style="color: #fff;' +
       ' font-style: normal;">ssh-keygen -f /path/to/private_key -p</i><br />' +
       "<br />" +
-      "It is strongly recommended to use one Private Key per SSH server if " +
-      "the Private Key will be submitted to Sshwifty. To generate a new SSH " +
-      'key pair, use command <i style="color: #fff; font-style: normal;">' +
-      "ssh-keygen -o -f /path/to/my_server_key</i> and then deploy the " +
-      'generated <i style="color: #fff; font-style: normal;">' +
-      "/path/to/my_server_key.pub</i> file onto the target SSH server",
+      "如果将私钥提交给 Sshwifty，强烈建议每个SSH服务器使用不同的私钥。 要生成一个" +
+      '新的 SSH 密钥对，请使用命令 <i style="color: #fff; font-style: normal;">' +
+      "ssh-keygen -o -f /path/to/my_server_key</i> 并将" +
+      '生成的 <i style="color: #fff; font-style: normal;">' +
+      "/path/to/my_server_key.pub</i> 文件部署到目标SSH服务器上。",
     type: "textfile",
     value: "",
     example: "",
@@ -385,12 +383,12 @@ const initialFieldDef = {
     },
     verify(d) {
       if (d.length <= 0) {
-        throw new Error("Private Key must be specified");
+        throw new Error("必须指定私钥");
       }
 
       if (d.length > MAX_PASSWORD_LEN) {
         throw new Error(
-          "It's too long, make it shorter than " + MAX_PASSWORD_LEN + " bytes"
+          "太长了，不能超过 " + MAX_PASSWORD_LEN + " 字节"
         );
       }
 
@@ -411,7 +409,7 @@ const initialFieldDef = {
         }
 
         if (lines[i].indexOf("Proc-Type: 4,ENCRYPTED") === 0) {
-          throw new Error("Cannot use encrypted Private Key file");
+          throw new Error("不能使用加密的私钥文件");
         }
 
         if (lines[i].indexOf(":") > 0) {
@@ -419,21 +417,19 @@ const initialFieldDef = {
         }
 
         if (lines[i].indexOf("MII") < 0) {
-          throw new Error("Cannot use encrypted Private Key file");
+          throw new Error("不能使用加密的私钥文件");
         }
 
         break;
       }
 
-      return "We'll login with this Private Key";
+      return "我们将用这个私钥登录";
     },
   },
   Authentication: {
-    name: "Authentication",
+    name: "身份验证",
     description:
-      "Please make sure the authentication method that you selected is " +
-      "supported by the server, otherwise it will be ignored and likely " +
-      "cause the login to fail",
+      "请确保你所选择的认证方法被服务器支持，否则它将被忽略，并可能导致登录失败。",
     type: "radio",
     value: "",
     example: "Password,Private Key,None",
@@ -449,16 +445,14 @@ const initialFieldDef = {
           return "";
 
         default:
-          throw new Error("Authentication method must be specified");
+          throw new Error("必须指定验证方法");
       }
     },
   },
   Fingerprint: {
-    name: "Fingerprint",
+    name: "指纹",
     description:
-      "Please carefully verify the fingerprint. DO NOT continue " +
-      "if the fingerprint is unknown to you, otherwise you maybe " +
-      "giving your own secrets to an imposter",
+      "请仔细核实指纹。如果你不知道这个指纹，请取消本次连接，否则中间人可能窃取你的连接凭据。",
     type: "textdata",
     value: "",
     example: "",
@@ -552,8 +546,8 @@ class Wizard {
   close() {
     this.step.resolve(
       this.stepErrorDone(
-        "Action cancelled",
-        "Action has been cancelled without reach any success"
+        "操作已取消",
+        "操作已取消且未取得任何成果"
       )
     );
   }
@@ -566,29 +560,29 @@ class Wizard {
     return command.done(
       true,
       data,
-      "Success!",
-      "We have connected to the remote"
+      "成功！",
+      "我们已经连接到远程主机"
     );
   }
 
   stepWaitForAcceptWait() {
     return command.wait(
-      "Requesting",
-      "Waiting for the request to be accepted by the backend"
+      "请求中",
+      "等待请求被后端接受"
     );
   }
 
   stepWaitForEstablishWait(host) {
     return command.wait(
-      "Connecting to " + host,
-      "Establishing connection with the remote host, may take a while"
+      "正在连接 " + host,
+      "与远程主机建立连接，可能需要一段时间"
     );
   }
 
   stepContinueWaitForEstablishWait() {
     return command.wait(
-      "Connecting",
-      "Establishing connection with the remote host, may take a while"
+      "连接中",
+      "与远程主机建立连接，可能需要一段时间"
     );
   }
 
@@ -648,7 +642,7 @@ class Wizard {
           await reader.readCompletely(rd)
         );
 
-        self.step.resolve(self.stepErrorDone("Connection failed", d));
+        self.step.resolve(self.stepErrorDone("连接失败", d));
       },
       "connect.succeed"(rd, commandHandler) {
         self.connectionSucceed = true;
@@ -726,8 +720,8 @@ class Wizard {
       "@completed"() {
         self.step.resolve(
           self.stepErrorDone(
-            "Operation has failed",
-            "Connection has been cancelled"
+            "操作失败",
+            "连接已被取消"
           )
         );
       },
@@ -739,7 +733,7 @@ class Wizard {
 
     return command.prompt(
       "SSH",
-      "Secure Shell Host",
+      "安全外壳协议",
       "Connect",
       (r) => {
         self.hasStarted = true;
@@ -824,12 +818,12 @@ class Wizard {
 
     return command.prompt(
       !fingerprintChanged
-        ? "Do you recognize this server?"
-        : "Danger! Server fingerprint has changed!",
+        ? "你认识这台服务器吗？"
+        : "危险！服务器指纹已改变！",
       !fingerprintChanged
-        ? "Verify server fingerprint displayed below"
-        : "It's very unusual. Please verify the new server fingerprint below",
-      !fingerprintChanged ? "Yes, I do" : "I'm aware of the change",
+        ? "核实下面显示的服务器指纹"
+        : "这是很不常见的。请验证下面的新服务器指纹",
+      !fingerprintChanged ? "确认" : "仍然继续",
       (r) => {
         newFingerprint(fingerprintData);
 
@@ -841,7 +835,7 @@ class Wizard {
         sd.send(CLIENT_CONNECT_RESPOND_FINGERPRINT, new Uint8Array([1]));
 
         self.step.resolve(
-          command.wait("Rejecting", "Sending rejection to the backend")
+          command.wait("拒绝中", "正在向后端发送拒绝信号")
         );
       },
       command.fields(initialFieldDef, [

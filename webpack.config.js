@@ -388,13 +388,13 @@ module.exports = {
         meta: [
           {
             name: "description",
-            content: "Connect to a SSH Server from your web browser",
+            content: "通过浏览器连接到SSH服务器",
           },
         ],
         mobile: true,
-        lang: "en-US",
+        lang: "zh-CN",
         inlineManifestWebpackName: "webpackManifest",
-        title: "Sshwifty Web SSH Client",
+        title: "Sshwifty Web SSH 客户端",
         minify: {
           html5: true,
           collapseWhitespace: !inDevMode,
@@ -410,11 +410,11 @@ module.exports = {
         meta: [
           {
             name: "description",
-            content: "Connect to a SSH Server from your web browser",
+            content: "通过浏览器连接到 SSH 服务器",
           },
         ],
         mobile: true,
-        lang: "en-US",
+        lang: "zh-CN",
         minify: {
           html5: true,
           collapseWhitespace: !inDevMode,

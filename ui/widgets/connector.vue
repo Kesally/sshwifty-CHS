@@ -31,7 +31,7 @@
       :class="{ disabled: working || cancelled }"
       @click="cancel()"
     >
-      Cancel
+      取消
     </a>
 
     <div
@@ -270,7 +270,7 @@
           class="secondary"
           @click="cancelAndGetNext"
         >
-          Cancel
+          取消
         </button>
       </div>
     </fieldset>

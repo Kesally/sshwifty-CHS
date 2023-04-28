@@ -19,29 +19,24 @@ import * as history from "./history.js";
 import { ECHO_FAILED } from "./socket.js";
 
 export function build(ctx) {
-  const connectionStatusNotConnected = "Sshwifty is ready to connect";
+  const connectionStatusNotConnected = "Sshwifty 已准备进行连接";
   const connectionStatusConnecting =
-    "Connecting to Sshwifty backend server. It should only take " +
-    "less than a second, or two";
+    "正在连接到 Sshwifty 后端服务器。通常不会超过几秒钟";
   const connectionStatusDisconnected =
-    "Sshwifty is disconnected from it's backend server";
+    "Sshwifty 与它的后端服务器断开了连接";
   const connectionStatusConnected =
-    "Sshwifty is connected to it's backend server, user interface operational";
+    "Sshwifty 已经连接到后端服务器, 可以进行操作";
   const connectionStatusUnmeasurable =
-    "Unable to measure connection delay. The connection maybe very " +
-    "busy or already lost";
+    "无法测量连接延迟。连接可能非常繁忙或已经丢失";
 
   const connectionDelayGood =
-    "Connection delay is low, operation should be very responsive";
+    "连接延迟很低，操作应该是非常灵敏的";
   const connectionDelayFair =
-    "Experiencing minor connection delay, operation should be responded " +
-    "within a reasonable time";
+    "遇到轻微的连接延迟，操作应在合理的时间内得到响应";
   const connectionDelayMedian =
-    "Experiencing median connection delay, consider to slow down your input " +
-    "to avoid misoperation";
+    "遇到中等的连接延迟，考虑放慢输入速度，避免误操作。";
   const connectionDelayHeavy =
-    "Experiencing bad connection delay, operation may freeze at any moment. " +
-    "Consider to pause your input until remote is responsive";
+    "遇到较高的连接延迟，操作可能在任何时候冻结。请考虑暂停你的输入，直到远程主机有反应。";
 
   const buildEmptyHistory = () => {
     let r = [];

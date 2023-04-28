@@ -20,11 +20,11 @@
 <template>
   <ul id="connect-switch" class="tab2" :class="{ red: tab === 'known' }">
     <li :class="{ active: tab === 'new' }" @click="switchTab('new')">
-      New remote
+      新主机
     </li>
 
     <li :class="{ active: tab === 'known' }" @click="switchTab('known')">
-      Known remotes <span class="label">{{ knownsLength }}</span>
+      历史记录 <span class="label">{{ knownsLength }}</span>
     </li>
   </ul>
 </template>

@@ -23,7 +23,7 @@
       v-if="knownList.length <= 0 && presets <= 0"
       id="connect-known-list-empty"
     >
-      No known remote available
+      无历史连接记录
     </div>
     <div v-else>
       <div v-if="knownList.length > 0" id="connect-known-list-list">
