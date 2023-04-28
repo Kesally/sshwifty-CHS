@@ -275,7 +275,7 @@ export default {
         el = document.createElement("a");
         el.setAttribute(
           "href",
-          "data:text/plain;charset=utf-8," + btoa(dataStr)
+          "data:text/plain;charset=utf-8," + btoa(encodeURIComponent(dataStr))
         );
         el.setAttribute("target", "_blank");
         el.setAttribute("download", "sshwifty.known-remotes.txt");
@@ -324,7 +324,7 @@ export default {
 
           r.onload = () => {
             try {
-              self.knownsImport(JSON.parse(atob(r.result)));
+              self.knownsImport(JSON.parse(atob(decodeURIComponent(r.result))));
             } catch (e) {
               alert("Unable to import known remotes due to error: " + e);
             }

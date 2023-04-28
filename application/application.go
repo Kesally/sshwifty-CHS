@@ -163,7 +163,7 @@ func (a Application) Run(
 	commands command.Commands,
 	handlerBuilder server.HandlerBuilderBuilder,
 ) error {
-	fmt.Fprintf(a.screen, banner, FullName, version, Author, URL)
+	fmt.Fprintf(a.screen, banner, FullName, version, Author, Translator, URL)
 
 	goLog.SetOutput(a.logger)
 	defer goLog.SetOutput(os.Stderr)

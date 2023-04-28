@@ -280,7 +280,7 @@ const initialFieldDef = {
     name: "用户名",
     description: "",
     type: "text",
-    value: "",
+    value: "root",
     example: "root",
     readonly: false,
     suggestions(input) {
@@ -431,8 +431,8 @@ const initialFieldDef = {
     description:
       "请确保你所选择的认证方法被服务器支持，否则它将被忽略，并可能导致登录失败。",
     type: "radio",
-    value: "",
-    example: "密码,私钥,None",
+    value: "密码",
+    example: "密码,私钥,无验证",
     readonly: false,
     suggestions(input) {
       return [];
@@ -441,7 +441,7 @@ const initialFieldDef = {
       switch (d) {
         case "密码":
         case "私钥":
-        case "None":
+        case "无验证":
           return "";
 
         default:
@@ -478,7 +478,7 @@ const initialFieldDef = {
  */
 function getAuthMethodFromStr(d) {
   switch (d) {
-    case "None":
+    case "无验证":
       return AUTHMETHOD_NONE;
 
     case "密码":

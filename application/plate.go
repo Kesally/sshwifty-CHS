@@ -22,12 +22,13 @@ const (
 	Name     = "Sshwifty"
 	FullName = "Sshwifty Web SSH Client"
 	Author   = "Ni Rui <ranqus@gmail.com>"
-	URL      = "https://github.com/nirui/sshwifty"
+	URL      = "https://github.com/nkxingxh/sshwifty"
+	Translator = "NKXingXh"
 )
 
 // Banner message
 const (
-	banner = "\r\n %s %s\r\n\r\n Copyright (C) %s\r\n %s\r\n\r\n"
+	banner = "\r\n %s %s\r\n\r\n Copyright (C) %s\r\n Translated by %s\r\n %s\r\n\r\n"
 )
 
 // Version
