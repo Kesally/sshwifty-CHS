@@ -53,16 +53,16 @@
                 href="javascript:;"
                 @click="remove(known.data.uid)"
               >
-                Remove
+                移除
               </a>
               <a
                 v-else
                 class="opt clr"
                 href="javascript:;"
-                title="Clear session data"
+                title="清除会话数据"
                 @click="clearSession(known.data.uid)"
               >
-                Clear
+                清理
               </a>
             </div>
 
@@ -73,7 +73,7 @@
               >
                 {{ known.data.title }}
               </h4>
-              Last: {{ known.data.last.toLocaleString() }}
+              上次连接: {{ known.data.last.toLocaleString() }}
             </div>
           </li>
         </ul>
@@ -194,7 +194,7 @@ export default {
         this.knownList.unshift({
           data: knownList[i],
           copying: false,
-          copyStatus: "Copy link",
+          copyStatus: "复制链接",
         });
       }
     },
@@ -228,7 +228,7 @@ export default {
 
       this.busy = true;
       known.copying = true;
-      known.copyStatus = "Copying";
+      known.copyStatus = "复制中";
 
       let lnk = this.launcherBuilder(known.data);
 
@@ -236,17 +236,17 @@ export default {
         await navigator.clipboard.writeText(lnk);
 
         (() => {
-          known.copyStatus = "Copied!";
+          known.copyStatus = "已复制！";
         })();
       } catch (e) {
         (() => {
-          known.copyStatus = "Failed";
+          known.copyStatus = "失败";
           ev.target.setAttribute("href", lnk);
         })();
       }
 
       setTimeout(() => {
-        known.copyStatus = "Copy link";
+        known.copyStatus = "复制链接";
         known.copying = false;
       }, 2000);
 

@@ -24,7 +24,7 @@
       <div v-else id="app-loading-error">&times;</div>
 
       <h1 v-if="error.length <= 0" id="app-loading-title">
-        Preparing client application
+        正在准备客户端应用程序
       </h1>
       <h1 v-else id="app-loading-title" class="error">
         {{ error }}
