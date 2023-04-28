@@ -21,7 +21,7 @@
   <div id="auth">
     <div id="auth-frame">
       <div id="auth-content">
-        <h1>Authentication required</h1>
+        <h1>需要认证</h1>
 
         <form class="form1" action="javascript:;" method="POST" @submit="auth">
           <fieldset>
@@ -31,7 +31,7 @@
                 error: passphraseErr.length > 0 || error.length > 0,
               }"
             >
-              Passphrase
+              口令
 
               <input
                 v-model="passphrase"
@@ -48,9 +48,9 @@
                 v-if="passphraseErr.length <= 0 && error.length <= 0"
                 class="message"
               >
-                A valid password is required in order to use this
-                <a href="https://github.com/nirui/sshwifty">Sshwifty</a>
-                instance
+                需要输入密码才能使用这个
+                <a href="https://github.com/nkxingxh/sshwifty">Sshwifty</a>
+                实例
               </div>
               <div v-else class="error">
                 {{ passphraseErr || error }}
@@ -59,7 +59,7 @@
 
             <div class="field">
               <button type="submit" :disabled="submitting" @click="auth">
-                Authenticate
+                验证
               </button>
             </div>
           </fieldset>
@@ -106,7 +106,7 @@ export default {
   methods: {
     auth() {
       if (this.passphrase.length <= 0) {
-        this.passphraseErr = "Passphrase cannot be empty";
+        this.passphraseErr = "口令不能为空";
 
         return;
       }
