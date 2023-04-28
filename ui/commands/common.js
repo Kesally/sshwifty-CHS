@@ -361,7 +361,7 @@ function parseIP(d) {
   }
 
   return {
-    type: "域名或主机名",
+    type: "Hostname",
     data: parseHostname(d),
   };
 }
