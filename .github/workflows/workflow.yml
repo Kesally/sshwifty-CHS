@@ -38,11 +38,20 @@ jobs:
           go install -v github.com/mitchellh/gox@latest
           CGO_ENABLED=0 GOMIPS=softfloat gox -ldflags "-s -w -X $VERSION_VARIABLE=$SSHWIFTY_VERSION" -osarch "$BUILD_TARGETS" -output "./.tmp/release/{{.Dir}}_${SSHWIFTY_VERSION}_{{.OS}}_{{.Arch}}/{{.Dir}}_{{.OS}}_{{.Arch}}"
 
-      - name: Upload a Build Artifact
+      - name: Upload a Build Artifact (All)
         uses: actions/upload-artifact@v3.0.0
         with:
-          # Artifact name
-          name: Build
-          # A file, directory or wildcard pattern that describes what to upload
+          name: build_all
           path: ./.tmp/release
-          # The desired behavior if no files are found using the provided path.
+
+      - name: Upload a Build Artifact (windows)
+        uses: actions/upload-artifact@v3.0.0
+        with:
+          name: build_windows_amd64
+          path: ./.tmp/release/sshwifty_*_windows_amd64.tar.gz
+
+      - name: Upload a Build Artifact (linux)
+        uses: actions/upload-artifact@v3.0.0
+        with:
+          name: build_linux_amd64
+          path: ./.tmp/release/sshwifty_*_linux_amd64.tar.gz
