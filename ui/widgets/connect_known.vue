@@ -23,7 +23,7 @@
       v-if="knownList.length <= 0 && presets <= 0"
       id="connect-known-list-empty"
     >
-      无历史连接记录
+      无历史连接记录与预设主机
     </div>
     <div v-else>
       <div v-if="knownList.length > 0" id="connect-known-list-list">
