@@ -28,7 +28,7 @@
       <div class="console-loading">
         <div class="console-loading-frame">
           <div class="console-loading-icon"></div>
-          <div class="console-loading-message">Initializing console ...</div>
+          <div class="console-loading-message">正在初始化控制台 ...</div>
         </div>
       </div>
     </div>
