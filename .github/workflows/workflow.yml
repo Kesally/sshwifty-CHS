@@ -38,20 +38,26 @@ jobs:
           go install -v github.com/mitchellh/gox@latest
           CGO_ENABLED=0 GOMIPS=softfloat gox -ldflags "-s -w -X $VERSION_VARIABLE=$SSHWIFTY_VERSION" -osarch "$BUILD_TARGETS" -output "./.tmp/release/{{.Dir}}_${SSHWIFTY_VERSION}_{{.OS}}_{{.Arch}}/{{.Dir}}_{{.OS}}_{{.Arch}}"
 
+      - run: zip -r build_all.zip ./.tmp/release
+
       - name: Upload a Build Artifact (All)
         uses: actions/upload-artifact@v3.0.0
         with:
-          name: build_all
-          path: ./.tmp/release
+          name: build_all.zip
+          path: build_all.zip
+
+      - run: zip -r build_windows_amd64.zip ./.tmp/release/sshwifty_*_windows_amd64
 
       - name: Upload a Build Artifact (windows)
         uses: actions/upload-artifact@v3.0.0
         with:
-          name: build_windows_amd64
-          path: ./.tmp/release/sshwifty_*_windows_amd64
+          name: build_windows_amd64.zip
+          path: build_windows_amd64.zip
+
+      - run: zip -r build_linux_amd64.zip ./.tmp/release/sshwifty_*_linux_amd64
 
       - name: Upload a Build Artifact (linux)
         uses: actions/upload-artifact@v3.0.0
         with:
-          name: build_linux_amd64
-          path: ./.tmp/release/sshwifty_*_linux_amd64
+          name: build_linux_amd64.zip
+          path: build_linux_amd64.zip
