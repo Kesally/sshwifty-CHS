@@ -269,7 +269,7 @@ This way, Sshwifty will try to load the configuration from file
   // NOTICE: You can only configure OnlyAllowPresetRemotes through a config
   //         file. This option is not supported when you are configuring with
   //         environment variables
-  OnlyAllowPresetRemotes: false
+  "OnlyAllowPresetRemotes": false
 }
 ```
 
